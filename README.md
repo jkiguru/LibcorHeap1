@@ -6,4 +6,5 @@
 - So you can connect using nc Example:
 [*] nc 127.0.0.1 1024
 - The libc.py file is my exploit for the challenge
+- To compile the binary: gcc -no-pie -o chall firstchallenge.c
 - Enjoy :) 

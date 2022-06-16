@@ -17,8 +17,8 @@ int j = -1;
 
 int main(int argc,char argv[]){
 	int input;
-	puts("Welcome here,They told you its cool...hmm!they Lied :(\nFirst road will lead you to the first flag ^_^,but \nWhy not take the second one and grab both flags!\nSelect\n> 1 \n or \n> 2 ");
-	printf("\nOh man!I hope you take the second one: ");
+	puts("Welcome here,They told you its cool...hmm!they Lied :(\nFirst road will lead you to the first flag ^_^,but \nWhy not take the second one and grab both flags!\nSelect\n> 1 \n or \n> 2\nOh man!I hope you take the second one: ");
+	fflush(stdout);
 	scanf("%d",&input);
 	
 	if(input == 2){
@@ -33,7 +33,6 @@ int main(int argc,char argv[]){
 }
 
 int kid(){
-	system("clear");
 	char input[0x30];
 	char password[0xa];
 	char reg[0x50];
@@ -42,23 +41,24 @@ int kid(){
 	while( true ){
 		while( true ){
 			memset(password,0,0x10);
-			printf(" _\t_\n|_\t_|\n|_\t_|\n|_\t_|\tOkay there kid!Welcome to this awesome system!!\n\nWhat would you like to do?\n1. Register \n2. Login \n> ");
+			puts(" _\t_\n|_\t_|\n|_\t_|\n|_\t_|\tOkay there kid!Welcome to this awesome system!!\n\nWhat would you like to do?\n1. Register \n2. Login \n> ");
+			fflush(stdout);
 			scanf("%d",&i);
 			if(i != 1) break;
-			puts("Enter your names: ");
-			fflush(stdin);
+			printf("Enter your names: ");
+			fflush(stdout);
 			read(0,reg,0x50);
 			printf("Welcome %s\n",reg);
 		}
 		if(i != 2) break;
-		printf("Enter the password: ");
+		puts("Enter the password: ");
+		fflush(stdout);
 		scanf("%s",password);
-		if(0 != strcmp(password , pass)){
-			puts("Wrong password!");
-			exit(0);
+		if(0 == strcmp(password , pass)){
+			printf("Logged in,Enter commands to navigate! with passowrd : %s",pass);                		    read(0,input,0x70);
 		}else{
-			puts("Logged in,Enter commands to navigate!");
-			read(0,input,0x70);
+			puts("Wrong password !");
+			exit(0);
 		}		
 	}
 	puts("Bye :)");
@@ -83,6 +83,7 @@ void nerd(){
 	for(i = 0;i < 2; i++){
 		memset(naming,0,0xc);
 		printf("Enter the name of your case %d: ",(i+1));
+		fflush(stdout);
 		scanf("%s",naming);
 		var2 = strlen(naming);
 		if(i == 0)
@@ -99,10 +100,10 @@ void nerd(){
 	}
 	i = ptrace(PTRACE_TRACEME,0,1,0);
 	if(i == -1){
-		printf("Must you do dynamic analysis");
+		puts("Must you do dynamic analysis");
 		exit(0);
 	}
 	else{
-		printf("\nAwesome study");
+		puts("\nAwesome study");
 	}
 }
